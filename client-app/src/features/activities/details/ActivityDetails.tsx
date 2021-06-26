@@ -1,16 +1,17 @@
 import React from 'react';
 import { Button, Card, Image} from 'semantic-ui-react';
-import { Activity } from '../../../app/models/activity';
+import LoadingComponents from '../../../app/layout/LoadingComponents';
+import { UseStore } from '../../../app/stores/store';
 
 
-interface Props{
-    activity : Activity;
-    cancelSelectActivity : () => void;
-    formOpen :(id : string) => void;
-}
 
-export default function ActivityDetails({activity ,cancelSelectActivity ,formOpen} : Props){
-    return(
+export default function ActivityDetails(){
+    
+  const{activityStore} = UseStore();
+  const{selectedActivity : activity, openForm , cancelSelectedActivity} = activityStore;
+
+  if(!activity) return <LoadingComponents />;
+  return(
         <Card fluid> 
         <Image src={`/assets/categoryImages/${activity.category}.jpg`} />
         <Card.Content>
@@ -23,8 +24,8 @@ export default function ActivityDetails({activity ,cancelSelectActivity ,formOpe
           </Card.Description>
           <Card.Content extra>
               <Button.Group widths='2'>
-                  <Button basic onClick={() => formOpen(activity.id)} color='blue' content ='Edit' />
-                  <Button onClick={cancelSelectActivity} basic color='grey' content ='Cancel' />
+                  <Button basic onClick={() => openForm(activity.id)} color='blue' content ='Edit' />
+                  <Button onClick={cancelSelectedActivity} basic color='grey' content ='Cancel' />
               </Button.Group>
           </Card.Content>
         </Card.Content>
