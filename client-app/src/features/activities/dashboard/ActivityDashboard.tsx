@@ -7,6 +7,7 @@ import LoadingComponents from '../../../app/layout/LoadingComponents';
 import { UseStore } from '../../../app/stores/store';
 
 import ActivityList from './AcitivityList';
+import ActivityFilters from './ActivityFilters';
 
 
 export default observer(function ActivityDashboard(){
@@ -26,12 +27,12 @@ export default observer(function ActivityDashboard(){
     return(
 
         <Grid>
-            <Grid.Column width='11'>
+            <Grid.Column width='10'>
                 <ActivityList />
             </Grid.Column>
 
-            <Grid.Column width='5'>
-             <h2>Activity Filters</h2>
+            <Grid.Column width='6'>
+             <ActivityFilters />
             </Grid.Column>
 
         </Grid>
