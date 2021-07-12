@@ -14,7 +14,7 @@ export default observer(function ActivityDetailedSidebar () {
                 inverted
                 color='teal'
             >
-                3 People Going
+                3 People Donated
             </Segment>
             <Segment attached>
                 <List relaxed divided>

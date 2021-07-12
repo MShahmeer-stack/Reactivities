@@ -46,7 +46,7 @@ export default observer(function ActivityDetails(){
 
 
 
-{/* <Card fluid> 
+/* <Card fluid> 
 <Image src={`/assets/categoryImages/${activity.category}.jpg`} />
 <Card.Content>
   <Card.Header>{activity.title}</Card.Header>
@@ -65,5 +65,5 @@ export default observer(function ActivityDetails(){
 </Card.Content>
 <Card.Content extra>
 </Card.Content>
-</Card> */}
+</Card> */
 

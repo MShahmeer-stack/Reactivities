@@ -33,7 +33,7 @@ export default function ActivityListItem({activity} : Props){
            </Segment>
 
            <Segment secondary>
-               Attendes Go Here
+               Donaters Go Here
            </Segment>
 
            <Segment clearing>
