@@ -16,8 +16,7 @@ axios.interceptors.response.use(async response => {
     
         await sleep(500);
         return response;
-    
-    
+        
 },(error :AxiosError)=> {
     const{data, status , config}=error.response!;
 
