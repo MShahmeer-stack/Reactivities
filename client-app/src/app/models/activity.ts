@@ -1,3 +1,5 @@
+import internal from "stream";
+
 export interface Activity {
     id: string;
     title: string;
@@ -6,4 +8,6 @@ export interface Activity {
     category: string;
     city: string;
     venue: string;
+    phone : string;
+    amount: string;
 }

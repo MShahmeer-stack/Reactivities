@@ -25,7 +25,7 @@ export default function ContactUs(){
                         </Form.Field>
                         <Form.Field>
                             <label>Email</label>
-                            <input placeholder='Last Name' />
+                            <input placeholder='Email' />
                         </Form.Field>
                         <Form.Field>
                             <label>Enter Your Message</label>

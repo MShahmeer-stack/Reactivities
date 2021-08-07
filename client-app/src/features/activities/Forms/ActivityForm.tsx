@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { Button,FormField,Header,Label,Segment } from 'semantic-ui-react';
+import { Button,Card,FormField,Header,Label,Segment } from 'semantic-ui-react';
 import LoadingComponents from '../../../app/layout/LoadingComponents';
 import { UseStore } from '../../../app/stores/store';
 import{v4 as uuid} from "uuid";
@@ -32,7 +32,9 @@ export default observer(function  ActivityForm(){
         category:'',
         date:null,
         city:'',
-        venue:''
+        venue:'',
+        phone:'',
+        amount:''
     });
     const validationSchema = Yup.object({
         title : Yup.string().required("The activity title is required."),
@@ -41,6 +43,8 @@ export default observer(function  ActivityForm(){
         date : Yup.string().required('Date is required').nullable(),
         venue: Yup.string().required(),
         city : Yup.string().required(),
+        amount : Yup.string().required('Please Enter the amount'),
+        phone : Yup.string().required('Phone Number is required')
     })
    
     useEffect(() => {
@@ -62,10 +66,12 @@ export default observer(function  ActivityForm(){
            }
     }
     
-
+//  <MyTextInput name='amount' placeholder="Enter Amount" />
     //if(loadingInitial) return <LoadingComponents content="Loading activity..."/>
     return(
             <Segment clearing>
+                <Header size='huge' color='teal' content='Create Your Case:'/>
+                <hr></hr>
                 <Header sub color='teal' content='Activity Details'/>
                 <Formik 
                 validationSchema={validationSchema}
@@ -75,8 +81,10 @@ export default observer(function  ActivityForm(){
                     {( {handleSubmit ,isValid, isSubmitting , dirty}) => (
                         <Form  className="ui form" onSubmit={handleSubmit} autoComplete='off'> 
                         <MyTextInput name='title' placeholder="Title" />
-                        <MyTextArea rows={3} placeholder="Description" name='description' />
-                        <MySelectInput options={CategoryOptions} placeholder="Category" name='category' />
+                       
+                        <MySelectInput options={CategoryOptions} placeholder="Choose Category" name='category' />
+                       
+                        <MyTextArea rows={3} placeholder="Description about your case" name='description' />
                         <MyDateInput 
                         placeholderText="Date"
                           name='date' 
@@ -84,9 +92,11 @@ export default observer(function  ActivityForm(){
                         timeCaption='time'
                         dateFormat = 'MMMM d, yyyy h:mm aa'
                         />
-                    <Header sub color='teal' content='Activity Details'/>
+                    <Header sub color='teal' content='Location Details'/>
                         <MyTextInput placeholder="City"  name='city'  />
                         <MyTextInput placeholder="Venue"  name='venue' />
+                        <MyTextInput name='phone' placeholder="Phone" />
+                      
                         <Button
                         disabled = {isSubmitting || !isValid || !dirty } 
                         loading= {loading} floated='right' positive type="submit" content='Submit' />

@@ -19,6 +19,10 @@ namespace Domain
 
         public string Venue { get; set; }
 
+        public string Phone {get; set;}
+
+        public string Amount { get; set; }
+
 
     }
 }

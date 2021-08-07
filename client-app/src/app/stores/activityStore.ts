@@ -8,7 +8,7 @@ export default class ActivityStore{
     selectedActivity : Activity | undefined =undefined;
     editMode=false;
     loading=false;
-    loadingInitial=true;  //maybe set false
+    loadingInitial=false;  //maybe set false
     
 
   constructor(){  
