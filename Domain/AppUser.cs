@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 
 
@@ -11,5 +12,6 @@ namespace Domain
 
         public string  AccountNumber { get; set; }
         
+        public ICollection<UserActivity> Activities { get; set; }
     }
 }

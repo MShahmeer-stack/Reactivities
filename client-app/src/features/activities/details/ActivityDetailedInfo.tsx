@@ -43,6 +43,27 @@ export default observer(function ActivityDetailedInfo({activity}: Props) {
                     </Grid.Column>
                 </Grid>
             </Segment>
+            <Segment attached>
+                <Grid verticalAlign='middle'>
+                    <Grid.Column width={1}>
+                        <Icon name='phone' size='large' color='teal'/>
+                    </Grid.Column>
+                    <Grid.Column width={11}>
+                        <span>{activity.phone}</span>
+                    </Grid.Column>
+                </Grid>
+            </Segment>
+
+            <Segment attached>
+                <Grid verticalAlign='middle'>
+                    <Grid.Column width={1}>
+                        <Icon name='money' size='large' color='teal'/>
+                    </Grid.Column>
+                    <Grid.Column width={11}>
+                        <span>{activity.amount} Rs.</span>
+                    </Grid.Column>
+                </Grid>
+            </Segment>
         </Segment.Group>
     )
 })

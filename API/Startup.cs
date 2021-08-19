@@ -26,6 +26,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Application.Interfaces;
+using  Infrastructure.Security;
 
 namespace API
 {
@@ -74,6 +76,13 @@ namespace API
                             ValidateAudience = false 
             };
             } );
+
+            services.AddAuthorization(opt=>{
+                opt.AddPolicy("IsActivityHost", policy =>{
+                        policy.Requirements.Add(new IsHostRequirement());
+                    });
+            });
+            services.AddTransient<IAuthorizationHandler , IsHostRequirementHandler>();
             services.AddScoped<TokenService>();
            
            
@@ -101,6 +110,7 @@ namespace API
            
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
+            services.AddScoped<IUserAccessor , UserAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
