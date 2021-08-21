@@ -28,6 +28,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Application.Interfaces;
 using  Infrastructure.Security;
+using Infrastructure.Photos;
 
 namespace API
 {
@@ -111,6 +112,8 @@ namespace API
             services.AddMediatR(typeof(List.Handler).Assembly);
             services.AddAutoMapper(typeof(MappingProfile).Assembly);
             services.AddScoped<IUserAccessor , UserAccessor>();
+            services.AddScoped<IPhotoAccessor , PhotoAccessor>();
+            services.Configure<CloudinarySettings>(_config.GetSection("Cloudinary"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
