@@ -1,4 +1,5 @@
 import {format} from "date-fns"
+import { observer } from "mobx-react-lite";
 import React  from "react";
 import { Link } from "react-router-dom";
 import { Button, Icon, Item, Label, Segment } from "semantic-ui-react";
@@ -8,7 +9,7 @@ import ActivityListItemAttendee from "./ActivityListItemAttendee";
 interface Props{
     activity : Activity
 }
-export default function ActivityListItem({activity} : Props){
+export default observer(function ActivityListItem({activity} : Props){
   
     return(
        <Segment.Group>
@@ -18,20 +19,20 @@ export default function ActivityListItem({activity} : Props){
                }
                <Item.Group>
                    <Item>
-                       <Item.Image style={{marginBottom: 40}} size='tiny' circular src='/assets/user.png'></Item.Image>
+                       <Item.Image style={{marginBottom: 40}} size='tiny' circular src={activity.host?.image ||'/assets/user.png'}></Item.Image>
                        <Item.Content>
                            <Item.Header as={Link} to={`/activities/${activity.id}`}>
                                {activity.title} 
                                </Item.Header>
-                               <Item.Description>Created By {activity.host?.displayName}</Item.Description>
+                               <Item.Description>Created By <Link to={`/profiles/${activity.host?.userName}`}>{activity.host?.displayName}</Link></Item.Description>
                                  <Item.Description>
                                      <Label basic color='blue'>{activity.category}</Label>
-                                 </Item.Description>
+                                 </Item.Description> 
                                  {activity.isHost &&(
-                                 <Item.Description>
-                                    <Label basic color='orange'>Host</Label>
+                                     <Item.Description>
+                                         <Label basic color='orange'> You Are Hosting this case </Label>
                                      </Item.Description>
-                                     )}
+                                 )}
                                  {activity.isGoing && !activity.isHost &&(
                                  <Item.Description>
                                     <Label basic color='green'>You liked this activity</Label>
@@ -68,7 +69,7 @@ export default function ActivityListItem({activity} : Props){
        </Segment.Group>
 
     )
-}
+})
 
 
 

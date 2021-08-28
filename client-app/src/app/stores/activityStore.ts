@@ -104,7 +104,7 @@ private getActivity(id : string){
             runInAction(()=> {
                 if(this.selectedActivity?.isGoing){
                     this.selectedActivity.attendees =this.selectedActivity.attendees?.filter(
-                        x=>x.userName != user?.userName);
+                        x=>x.userName !== user?.userName);
                         this.selectedActivity.isGoing =false;
                 }
                 else{
@@ -225,6 +225,10 @@ private getActivity(id : string){
         }finally{
              runInAction(()=> this.loading=false);
         }
+    }
+
+    clearSelectedActivity = () =>{
+        this.selectedActivity = undefined;
     }
 
 }

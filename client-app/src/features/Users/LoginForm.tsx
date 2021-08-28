@@ -13,8 +13,8 @@ export default observer (function LoginForm(){
         <Formik
         initialValues={{email:'' , password:'' ,error :null}}
 
-        onSubmit={(values, {setErrors} )=> userStore.login(values).
-        catch(error => setErrors({error :"Invalid Email Or Password"}))}        
+        onSubmit={(values, {setErrors} )=> userStore.login(values)
+        .catch(error => setErrors({error :"Invalid Email Or Password"}))}        
         >
                 {({handleSubmit , isSubmitting , errors}) => (
                     <Form className="ui form" autoComplete='off' onSubmit={handleSubmit} >

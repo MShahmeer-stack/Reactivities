@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Application.Activities;
 using Application.Core;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +29,8 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Application.Interfaces;
 using  Infrastructure.Security;
 using Infrastructure.Photos;
+using API.SignalR;
+using System.Threading.Tasks;
 
 namespace API
 {
@@ -76,6 +78,18 @@ namespace API
                             ValidateIssuer = false,
                             ValidateAudience = false 
             };
+            opt.Events = new JwtBearerEvents 
+            {
+                OnMessageReceived = context =>
+                {
+                    var accessToken = context.Request.Query["access_token"];
+                    var path = context.HttpContext.Request.Path;
+                    if(!string.IsNullOrEmpty(accessToken) && (path.StartsWithSegments("/chat"))){
+                        context.Token = accessToken;
+                    }
+                    return Task.CompletedTask;
+                }
+            };
             } );
 
             services.AddAuthorization(opt=>{
@@ -104,7 +118,7 @@ namespace API
             {
                 opt.AddPolicy("CorsPolicy", policy =>
                 {
-                    policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                    policy.AllowAnyMethod().AllowAnyHeader().AllowCredentials().WithOrigins("http://localhost:3000");
                 });
             });
 
@@ -114,6 +128,7 @@ namespace API
             services.AddScoped<IUserAccessor , UserAccessor>();
             services.AddScoped<IPhotoAccessor , PhotoAccessor>();
             services.Configure<CloudinarySettings>(_config.GetSection("Cloudinary"));
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -140,6 +155,7 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/chat");
             });
         }   
     }

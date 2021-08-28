@@ -28,5 +28,7 @@ namespace Domain
         public bool IsCancelled { get; set; }
         public ICollection<UserActivity> Attendees { get; set; } = new List<UserActivity>();
 
+        public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
     }
 }

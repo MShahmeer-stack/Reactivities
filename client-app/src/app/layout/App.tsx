@@ -20,6 +20,7 @@ import { UseStore } from '../stores/store';
 import LoadingComponents from './LoadingComponents';
 import ModalContainer from '../common/modals/ModalContainer';
 import Homepage from '../../features/Home/Homepage';
+import ProfilePage from '../../features/Profiles/ProfilePage';
 
 function App() {
 
@@ -54,6 +55,7 @@ return (
       <Route exact path='/contactUs' component={ContactUs}/>
       <Route path='/activities/:id' component={ActivityDetails}/>
       <Route key={location.key} path={['/createActivity','/manage/:id']} component={ActivityForm}/>
+      <Route path='/profiles/:userName' component={ProfilePage}/>
       <Route path='/errors' component={TestErrors}/>
       <Route path='/server-error' component={ServerError}/>
       <Route path='/login' component={LoginForm}/>
