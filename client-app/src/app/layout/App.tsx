@@ -52,7 +52,9 @@ return (
          <NavBar />
       <Container style={{marginTop : '7em'}}>
      <Switch>
-     <Route exact path='/activities' component={ActivityDashboard}/>
+      
+       
+       <Route exact path='/activities' component={ActivityDashboard}/>
       <Route exact path='/contactUs' component={ContactUs}/>
       <Route exact path='/clothingBank' component={ClothingBank}/>
       <Route path='/activities/:id' component={ActivityDetails}/>
