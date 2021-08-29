@@ -21,6 +21,7 @@ import LoadingComponents from './LoadingComponents';
 import ModalContainer from '../common/modals/ModalContainer';
 import Homepage from '../../features/Home/Homepage';
 import ProfilePage from '../../features/Profiles/ProfilePage';
+import ClothingBank from '../../features/Clothing/ClothingBank';
 
 function App() {
 
@@ -53,6 +54,7 @@ return (
      <Switch>
      <Route exact path='/activities' component={ActivityDashboard}/>
       <Route exact path='/contactUs' component={ContactUs}/>
+      <Route exact path='/clothingBank' component={ClothingBank}/>
       <Route path='/activities/:id' component={ActivityDetails}/>
       <Route key={location.key} path={['/createActivity','/manage/:id']} component={ActivityForm}/>
       <Route path='/profiles/:userName' component={ProfilePage}/>

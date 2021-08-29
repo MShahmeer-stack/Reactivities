@@ -31,7 +31,8 @@ export default observer(function ProfileEdit({setEditMode}:Props){
                     <Form className="ui form">
                            <MyTextInput placeholder='Display Name' name='displayName' />
                            <MyTextArea rows={3} placeholder='Add your Bio' name='bio'></MyTextArea>
-                            <Button loading={isSubmitting} 
+                            <Button
+                             loading={isSubmitting} 
                             positive
                              content="Update Profile"
                               type="submit" 

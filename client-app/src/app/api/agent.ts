@@ -94,12 +94,15 @@ const Profiles={
         formData.append('File',file);
 
         return axios.post<Photo>('photos', formData, {
-            headers : {'Content-type' : 'multipart/form-data'}
+            headers: {'Content-type': 'multipart/form-data'}
         } )
     },
     setMainPhoto : (id: string) => requests.post(`/photos/${id}/setMain`,{}),
-    deletePhoto : (id :string) => requests.del(`/photos/${id}`),
-    updateProfile : (profile : Partial<Profile>) => requests.put(`/profiles`,profile)
+    deletePhoto: (id: string) => requests.del(`/photos/${id}`),
+    updateProfile: (profile: Partial<Profile>) => requests.put(`/profiles`, profile),
+    updateFollowing : (userName : string) => requests.post(`/follow/${userName}`, {}),
+    listFollowings : (userName : string , predicate : string) => requests.get<Profile[]>
+                                          (`/follow/${userName}?predicate=${predicate}`) 
 
 }
 const agent= {

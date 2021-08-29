@@ -19,6 +19,7 @@ export default observer(function NavBar(){
                     KindCause
                 </Menu.Item>
                 <Menu.Item  as={NavLink} to='/activities' name='Timeline'></Menu.Item>
+                <Menu.Item  as={NavLink} to='/clothingBank' name='Clothing Bank'></Menu.Item>
                 <Menu.Item  as={NavLink} to='/contactUs' name='Contact Us'></Menu.Item>
                 <Menu.Item  as={NavLink} to='/errors' name='Errors'></Menu.Item>
                 <Menu.Item>

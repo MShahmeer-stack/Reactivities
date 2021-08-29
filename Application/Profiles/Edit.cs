@@ -61,7 +61,7 @@ namespace Application.Profiles
                 if (result) return Result<Unit>.Success(Unit.Value);
             
 
-                return Result<Unit>.Failure ("Failed to create and activity");
+                return Result<Unit>.Failure ("Failed updating profile");
             }
         }
         

@@ -1,4 +1,4 @@
-import internal from "stream";
+
 import { Profile } from "./profile";
 
 export interface Activity {
