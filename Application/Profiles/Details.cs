@@ -12,7 +12,7 @@ using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 
-using Application.Interfaces;
+
 
 
 namespace Application.Profiles
