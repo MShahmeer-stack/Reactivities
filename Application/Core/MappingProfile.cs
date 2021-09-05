@@ -33,8 +33,6 @@ namespace Application.Core
              .ForMember(d=> d.Following , 
              o=> o.MapFrom(s=> s.Followers.Any(x=> x.Observer.UserName == currentUserName)));
 
-
-
             CreateMap<Comment , CommentDto>()
              .ForMember(d => d.DisplayName , o=>o.MapFrom( s=> s.Author.DisplayName))
                .ForMember(d => d.UserName , o=>o.MapFrom( s=> s.Author.UserName))

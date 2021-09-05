@@ -76,12 +76,11 @@ namespace API.Controllers
         var result = await _userManager.CreateAsync(user , registerDto.Password);
 
         if(result.Succeeded){
-           return CreateUserObject(user);
-
+            return CreateUserObject(user);
         }
-
-        return BadRequest(" Problem Registering User ");
         
+        return BadRequest(" Problem Registering User ");
+
         }
         [Authorize]
         [HttpGet]

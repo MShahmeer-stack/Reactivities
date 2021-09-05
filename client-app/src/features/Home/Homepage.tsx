@@ -39,24 +39,6 @@ export default observer(function HomePage(){
 
 </Container>
  </Segment>
-<br />
-<br />
-<br />
-<br />
-
-<Container>
-  
-
-
-          <p>adfhaewiufhnaedskjnchidufhewiiujhned</p>
-          <p>adfhaewiufhnaedskjnchidufhewiiujhned</p>
-          <p>adfhaewiufhnaedskjnchidufhewiiujhned</p>
-          <p>adfhaewiufhnaedskjnchidufhewiiujhned</p>
-          <p>adfhaewiufhnaedskjnchidufhewiiujhned</p>
-
-     
-</Container>
-
 </>
     )
 })

@@ -24,6 +24,7 @@ namespace Domain
 
         public string Amount { get; set; }
         
+        
 
         public bool IsCancelled { get; set; }
         public ICollection<UserActivity> Attendees { get; set; } = new List<UserActivity>();

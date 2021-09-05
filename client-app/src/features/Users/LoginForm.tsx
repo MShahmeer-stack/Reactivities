@@ -20,7 +20,6 @@ export default observer (function LoginForm(){
                     <Form className="ui form" autoComplete='off' onSubmit={handleSubmit} >
                            <Header as='h2' content='Login' color='teal' textAlign='center' />
                            <hr />
-                           <br /> <br /> <br />
                            
                             <MyTextInput name="email" placeholder="Email"></MyTextInput>
                             <MyTextInput name="password" placeholder="Password" type="password"></MyTextInput>
